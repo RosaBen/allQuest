@@ -169,29 +169,67 @@ const step5 = step4.join(" ");
 // console.log('step 5 : ', step5);
 ```
 
-# 
+# shortlongshort
 
 ```js
+// Given 2 strings, a and b, return a string of the form short+long+short, with the shorter string on the outside and the longer string on the inside. The strings will not be the same length, but they may be empty ( zero length ).
+function solution(a, b){
+return a.length>b.length? b+a+b:a+b+a
+} ; //solution(1,2) returns 121
 
 ```
 
-
-# 
+# Create Phone Number
 
 ```js
+// Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+function createPhoneNumber(numbers){
+const first = [];
+const second = [];
+const third = [];
+for(let i = 0; i < 3; i++){
+    first.push(numbers[i]);
+}
+for (let i = 3; i < 6; i++){
+    second.push(numbers[i]);}
+for(let i = 6; i < 10; i++){
+    third.push(numbers[i]);
+}
+return `(${first.join('')}) ${second.join('')}-${third.join('')}`;
+}; // createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) returns (123) 456-7890")
+```
+
+# Detect Pangram
+
+```js
+//A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+
+//Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+function isPangram(string){
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let lowerCaseString = string.toLowerCase();
+  for (let i=0; i<alphabet.length;i++){
+    if(lowerCaseString.indexOf(alphabet[i]) === -1){
+      return false;
+    }
+  }
+  return true;
+}; // isPangram("The quick brown fox jumps over the lazy dog") returns true
 
 ```
 
-# 
+# Opposite number
 
 ```js
 
-```
-
-# 
-
-```js
-
+//Very simple, given a number (integer / decimal / both depending on the language), find its opposite (additive inverse).
+function opposite(number) {
+  if(number<0){
+    return number * (-1);
+  } else {
+    return number * (-1);
+  }
+}; // opposite (-55) returns 55
 ```
 
 # 
