@@ -467,7 +467,7 @@ console.log(arrayANumber, arrayBNumber);
 
 for (let index = 0; index < arrayANumber.length; index++) {
     let sumArrays =arrayANumber[index] + arrayBNumber[index];
-    result.push(sumArrays);
+    result.push(sumArrays.toString());
     
 }
 console.log(result);
