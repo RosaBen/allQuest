@@ -37,11 +37,11 @@ thirdAngle(20, 80) doit retourner 80
 */
 
 function thirdAngle(a, b) {
-const thirdAngle = 180-a-b; 
-return thirdAngle;
+  const thirdAngle = 180 - a - b;
+  return thirdAngle;
 }
 
-console.log(thirdAngle(10,20));
+console.log(thirdAngle(10, 20));
 
 module.exports = thirdAngle;
 ```
@@ -59,11 +59,11 @@ Rappel : Pour vérifier si un nombre est divisible par un autre, tu peux utilise
 */
 
 function isLeapYear(year) {
-if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)){
-  return true;
-} else {
-  return false;
-}
+  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 console.log(isLeapYear(2024));
 ```
@@ -147,11 +147,18 @@ const instructors = [
 
 // PART 1// Given an array with different objects inside that contain an instructor profile with his/her name, the availability and the specialities, you need to create a new array that contains only instructors that know about Javascript and available on the weekend. Keep in mind that if their availability is all, it means that they are also available on the weekend, so they need to be included too
 // filtrer le tableau pour récupérer les instructeurs disponible le weekend et leur specialitées
-const weekendInstructors=[];
-const searchInstrustors = instructors.filter((instructor)=>{
-  if((instructor.availability === "all" || instructor.availability === "weekend") && (instructor.specialities.includes("Javascript"))){
-    weekendInstructors.push({name:instructor.name, specialities:instructor.specialities});
-      }   
+const weekendInstructors = [];
+const searchInstrustors = instructors.filter((instructor) => {
+  if (
+    (instructor.availability === "all" ||
+      instructor.availability === "weekend") &&
+    instructor.specialities.includes("Javascript")
+  ) {
+    weekendInstructors.push({
+      name: instructor.name,
+      specialities: instructor.specialities,
+    });
+  }
 });
 console.log(weekendInstructors);
 
@@ -167,22 +174,19 @@ console.log(weekendInstructors);
 // Hi nameOfInstructor, we inform you that this weekend you will be doing the support class and you need to prepare a Python workshop
 // envoyer un message different si instructeur connait aussi python
 
- const messageInstructors2 = weekendInstructors.map(instructor => {
-  if (instructor.specialities.includes("Python")){
-    return `Hi ${instructor.name}, we inform you that this weekend you will be doing the support class and you need to prepare a Python workshop`
-  }else {
-    return `Hi ${instructor.name}, we inform you that this weekend you will be doing the support class`
+const messageInstructors2 = weekendInstructors.map((instructor) => {
+  if (instructor.specialities.includes("Python")) {
+    return `Hi ${instructor.name}, we inform you that this weekend you will be doing the support class and you need to prepare a Python workshop`;
+  } else {
+    return `Hi ${instructor.name}, we inform you that this weekend you will be doing the support class`;
   }
- }
-
- );
- console.log(messageInstructors2);
+});
+console.log(messageInstructors2);
 ```
 
 ### exemple 2
 
 ```js
-
 /*
 Voici un exemple de tableau de personnes. Écris une fonction qui à partir d'un tableau similaire reçu en paramètre renverra un nouveau tableau,
 lui-même contenant deux sous-tableaux :
@@ -191,39 +195,38 @@ lui-même contenant deux sous-tableaux :
 (Étant donné qu'une personne est senior si elle a 5 ans d'expérience ou plus)*/
 
 const persons = [
-    { name: 'Mary', experience: 2, job: 'web dev' },
-    { name: 'Tony', experience: 6, job: 'data analyst' },
-    { name: 'John', experience: 2, job: 'data analyst' },
-    { name: 'Jane', experience: 6, job: 'web dev' },
-    { name: 'Maggie', experience: 2, job: 'web dev' },
-    { name: 'Leonardo', experience: 2, job: 'data analyst' },
-    { name: 'Carla', experience: 4, job: 'data analyst' },
-    { name: 'Mickael', experience: 7, job: 'web dev' },
-    { name: 'Penelope', experience: 7, job: 'web dev' },
-    { name: 'Homer', experience: 5, job: 'data analyst' },
-    { name: 'Leonardo', experience: 2, job: 'data analyst' },
-    { name: 'Carla', experience: 4, job: 'web dev' },
-    { name: 'Lisa', experience: 3, job: 'web dev' },
-    { name: 'Millie', experience: 5, job: 'data analyst' },
-    { name: 'Penelope', experience: 7, job: 'web dev' },
-  ];
-  
-  
-  function findSeniors(persons) {
-  const  seniorDev = persons.filter(
-      (person)=>person.experience >=5 && person.job === "web dev"
-    )
-  
-    console.log(seniorDev)
-    seniorAnalyst=persons.filter((person)=> person.experience >=5 && person.job === "data analyst");
-  
-  console.log(seniorAnalyst)
-  return [seniorDev, seniorAnalyst];
-  
-  }
+  { name: "Mary", experience: 2, job: "web dev" },
+  { name: "Tony", experience: 6, job: "data analyst" },
+  { name: "John", experience: 2, job: "data analyst" },
+  { name: "Jane", experience: 6, job: "web dev" },
+  { name: "Maggie", experience: 2, job: "web dev" },
+  { name: "Leonardo", experience: 2, job: "data analyst" },
+  { name: "Carla", experience: 4, job: "data analyst" },
+  { name: "Mickael", experience: 7, job: "web dev" },
+  { name: "Penelope", experience: 7, job: "web dev" },
+  { name: "Homer", experience: 5, job: "data analyst" },
+  { name: "Leonardo", experience: 2, job: "data analyst" },
+  { name: "Carla", experience: 4, job: "web dev" },
+  { name: "Lisa", experience: 3, job: "web dev" },
+  { name: "Millie", experience: 5, job: "data analyst" },
+  { name: "Penelope", experience: 7, job: "web dev" },
+];
 
-  console.log(findSeniors(persons));
-  
+function findSeniors(persons) {
+  const seniorDev = persons.filter(
+    (person) => person.experience >= 5 && person.job === "web dev",
+  );
+
+  console.log(seniorDev);
+  seniorAnalyst = persons.filter(
+    (person) => person.experience >= 5 && person.job === "data analyst",
+  );
+
+  console.log(seniorAnalyst);
+  return [seniorDev, seniorAnalyst];
+}
+
+console.log(findSeniors(persons));
 ```
 
 ## methode split, filter, test, slice, splice, reverse, join, tolowercase
@@ -233,25 +236,28 @@ const mysteriousString = `iu@zfiz)!uzqzf!snoi??alutargnocze&gfuzyafzygfzmgfu%f`;
 // console.log('step 0 : ',  mysteriousString);
 
 // step1 : split the myserious string it into an array, so that each letter becomes an item (the separator should be an empty string).
-// tolowercase = mettre en minuscule; 
-// split = séparer; 
-// filter=filtrer; 
+// tolowercase = mettre en minuscule;
+// split = séparer;
+// filter=filtrer;
 // test= vérifie le caractère correspond à la condition (ici alphabet de a à z)
-const step1 = mysteriousString.toLowerCase().split("").filter(character=>/[a-z]/.test(character));
+const step1 = mysteriousString
+  .toLowerCase()
+  .split("")
+  .filter((character) => /[a-z]/.test(character));
 // const s2 = step1.split("");
 // const alphabet = s2.filter(character=>/[a-z]/.test(character))
 // console.log('step1 : ', step1);
 
 // step2 : get a slice of the array : take elements from the 15th included to the 32nd excluded (remember indexes start at 0 !)
 // slice = couper à partir de index n à index n1=> récupérer la partie coupé
-const step2 = step1.slice(14,31);
-console.log('step 2 : ', step2);
+const step2 = step1.slice(14, 31);
+console.log("step 2 : ", step2);
 
 // step3 : Splice the array to replace 2 elements from index 5 with only one element : the letter 't'
 // slice()= permet faire copie afin de récupérer tous les éléments de l'array précédent
 // splice = a partir d'un index,  retire (optionel =0), ajoute "string ou caractère"
 const step3 = step2.slice(); // making a copy of the array
-step3.splice(5,2,"t", "v");
+step3.splice(5, 2, "t", "v");
 // console.log('step 3 : ', step3);
 
 // step4 : reverse the array
@@ -269,30 +275,30 @@ const step5 = step4.join(" ");
 
 ```js
 // Given 2 strings, a and b, return a string of the form short+long+short, with the shorter string on the outside and the longer string on the inside. The strings will not be the same length, but they may be empty ( zero length ).
-function solution(a, b){
-return a.length>b.length? b+a+b:a+b+a
-} ; //solution(1,2) returns 121
-
+function solution(a, b) {
+  return a.length > b.length ? b + a + b : a + b + a;
+} //solution(1,2) returns 121
 ```
 
 ## Create Phone Number
 
 ```js
 // Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
-function createPhoneNumber(numbers){
-const first = [];
-const second = [];
-const third = [];
-for(let i = 0; i < 3; i++){
+function createPhoneNumber(numbers) {
+  const first = [];
+  const second = [];
+  const third = [];
+  for (let i = 0; i < 3; i++) {
     first.push(numbers[i]);
-}
-for (let i = 3; i < 6; i++){
-    second.push(numbers[i]);}
-for(let i = 6; i < 10; i++){
+  }
+  for (let i = 3; i < 6; i++) {
+    second.push(numbers[i]);
+  }
+  for (let i = 6; i < 10; i++) {
     third.push(numbers[i]);
-}
-return `(${first.join('')}) ${second.join('')}-${third.join('')}`;
-}; // createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) returns (123) 456-7890")
+  }
+  return `(${first.join("")}) ${second.join("")}-${third.join("")}`;
+} // createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) returns (123) 456-7890")
 ```
 
 ## Detect Pangram
@@ -301,31 +307,29 @@ return `(${first.join('')}) ${second.join('')}-${third.join('')}`;
 //A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
 
 //Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
-function isPangram(string){
+function isPangram(string) {
   let alphabet = "abcdefghijklmnopqrstuvwxyz";
   let lowerCaseString = string.toLowerCase();
-  for (let i=0; i<alphabet.length;i++){
-    if(lowerCaseString.indexOf(alphabet[i]) === -1){
+  for (let i = 0; i < alphabet.length; i++) {
+    if (lowerCaseString.indexOf(alphabet[i]) === -1) {
       return false;
     }
   }
   return true;
-}; // isPangram("The quick brown fox jumps over the lazy dog") returns true
-
+} // isPangram("The quick brown fox jumps over the lazy dog") returns true
 ```
 
 ## Opposite number
 
 ```js
-
 //Very simple, given a number (integer / decimal / both depending on the language), find its opposite (additive inverse).
 function opposite(number) {
-  if(number<0){
-    return number * (-1);
+  if (number < 0) {
+    return number * -1;
   } else {
-    return number * (-1);
+    return number * -1;
   }
-}; // opposite (-55) returns 55
+} // opposite (-55) returns 55
 ```
 
 ## Parse nice int from char problem
@@ -334,24 +338,23 @@ function opposite(number) {
 //You ask a small girl,"How old are you?" She always says, "x years old", where x is a random number between 0 and 9.
 //Write a program that returns the girl's age (0-9) as an integer.
 //Assume the test input string is always a valid string. For example, the test input may be "1 year old" or "5 years old". The first character in the string is always a number.
-function getAge(inputString){
+function getAge(inputString) {
   // return the girl's correct age as an integer. Happy coding :)
   // recupère tous les chiffres avec match(/\d+/)
   // recupère premiers chiffres avec match(/\d/) => de 0 à 9
-  let isNumber = inputString.match(/\d+/); 
-  if (isNumber){
+  let isNumber = inputString.match(/\d+/);
+  if (isNumber) {
     // parsInt convertit le string en nombre
-let age = parseInt(isNumber[0],10);
-if(age <= 10){
-  return age;
-  }else {
-    return "trop agé"
+    let age = parseInt(isNumber[0], 10);
+    if (age <= 10) {
+      return age;
+    } else {
+      return "trop agé";
+    }
+  } else {
+    return "age non mentioné";
   }
-  }else{
-    return "age non mentioné"
-  }
-}; // getAge(25 years old) returns "trop agé"
-
+} // getAge(25 years old) returns "trop agé"
 ```
 
 ## tableaux imbriquées
@@ -378,22 +381,20 @@ exemple du résultat final :
 
 function theaterSieges() {
   const colonnes = 26;
-  const sieges= 100;
-  const theater=[];
-   for (let i=1; i<= colonnes;i++){
-    const rangee =[];
-    for (let ii=1; ii<=sieges; ii++){
-        rangee.push(`${i}-${ii}`)
+  const sieges = 100;
+  const theater = [];
+  for (let i = 1; i <= colonnes; i++) {
+    const rangee = [];
+    for (let ii = 1; ii <= sieges; ii++) {
+      rangee.push(`${i}-${ii}`);
     }
     theater.push(rangee);
-   }
-   console.log(theater);
-   return theater;
-
   }
-  
-  theaterSieges();
-  
+  console.log(theater);
+  return theater;
+}
+
+theaterSieges();
 ```
 
 ## utilisation de split
@@ -413,31 +414,43 @@ Pour exemple, si ta fonction recevait le tableau ci-dessous en paramètre, tu de
 */
 
 function getPoints(results) {
-    const victory = 3;
-    const nullPoints = 1;
-    const lose = 0;
-    const myTeam =0;
-    const adversary=0;
-    let result=0;
+  const victory = 3;
+  const nullPoints = 1;
+  const lose = 0;
+  const myTeam = 0;
+  const adversary = 0;
+  let result = 0;
 
-    for (let index = 0; index < results.length; index++) {
-        let [myTeam, adversary] = results[index].split(":");
-        // console.log(myTeam, adversary)
-        if(myTeam > adversary){
-            result = result+victory;
-        } else if(myTeam === adversary){
-            result = result +nullPoints;
-        } 
-        console.log(result);
-    } return [result];
-
+  for (let index = 0; index < results.length; index++) {
+    let [myTeam, adversary] = results[index].split(":");
+    // console.log(myTeam, adversary)
+    if (myTeam > adversary) {
+      result = result + victory;
+    } else if (myTeam === adversary) {
+      result = result + nullPoints;
+    }
+    console.log(result);
   }
+  return [result];
+}
 
-console.log(getPoints(["1:0", "2:0", "3:0", "4:4", "2:2", "3:3", "1:4", "2:3", "2:4", "3:3"]))
-
+console.log(
+  getPoints([
+    "1:0",
+    "2:0",
+    "3:0",
+    "4:4",
+    "2:2",
+    "3:3",
+    "1:4",
+    "2:3",
+    "2:4",
+    "3:3",
+  ]),
+);
 ```
 
-##  addition entre 2 tableaux
+## addition entre 2 tableaux
 
 ```js
 /*
@@ -452,39 +465,92 @@ sumArr( ["2", "5", "3"], ["2", "4", "9", "5", "5"] ) should return ["4", "9", "1
 */
 
 function sumArr(arrayA, arrayB) {
-   let arrayANumber = arrayA.map(Number);
-   let arrayBNumber = arrayB.map(Number);
-console.log(arrayANumber, arrayBNumber);
-let result = [];
+  let arrayANumber = arrayA.map(Number);
+  let arrayBNumber = arrayB.map(Number);
+  console.log(arrayANumber, arrayBNumber);
+  let result = [];
 
-while (arrayANumber.length > arrayBNumber.length) {
-        arrayBNumber.push(0);  
-    }
-while (arrayANumber.length < arrayBNumber.length){
-        arrayANumber.push(0);
-}
-console.log(arrayANumber, arrayBNumber);
+  while (arrayANumber.length > arrayBNumber.length) {
+    arrayBNumber.push(0);
+  }
+  while (arrayANumber.length < arrayBNumber.length) {
+    arrayANumber.push(0);
+  }
+  console.log(arrayANumber, arrayBNumber);
 
-for (let index = 0; index < arrayANumber.length; index++) {
-    let sumArrays =arrayANumber[index] + arrayBNumber[index];
+  for (let index = 0; index < arrayANumber.length; index++) {
+    let sumArrays = arrayANumber[index] + arrayBNumber[index];
     result.push(sumArrays.toString());
-    
-}
-console.log(result);
-return result;
+  }
+  console.log(result);
+  return result;
 }
 
-  sumArr(["2", "5", "3"], ["2", "4", "9", "5", "5"] );
-
+sumArr(["2", "5", "3"], ["2", "4", "9", "5", "5"]);
 ```
 
-## t4
+## tableau en ordre croissant?
+
+```js
+function inAscOrder(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] > arr[i + 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(inAscOrder([1, 2, 4, 7, 19])); // true
+console.log(inAscOrder([1, 2, 3, 4, 5])); // true
+console.log(inAscOrder([1, 6, 10, 18, 22, 34, 120])); // false
+console.log(inAscOrder([9, 8, 7, 6, 5, 4, 3, 2, 1])); // false
+```
+
+## cooking time
+
+```js
+function cookingTime(eggs) {
+  // we have only one pot, how many minutes to cook all the eggs.
+  const nbEggsPerPot = 8;
+  const cookingTimerPerPot = 5;
+
+  return Math.ceil(eggs / nbEggsPerPot) * cookingTimerPerPot;
+}
+
+console.log(cookingTime(1000));
+```
+
+## sort odd numbers in array and keep event numbers in place without sorting
+
+```js
+function sortArray(array) {
+  // recupérer les nombres impairs
+  const oddNumbers = array.filter((number) => number % 2 !== 0);
+  // trier les nombres impairs
+  const sortedOddNumbers = oddNumbers.sort((a, b) => a - b);
+  // retourner le tableau initial avec les nombres impairs triés
+  return array.map((number) =>
+    number % 2 !== 0 ? sortedOddNumbers.shift() : number,
+  );
+}
+
+console.log(sortArray([5, 3, 2, 8, 1, 4])); // [1, 3, 2, 8, 5, 4];
+```
+
+## t455
 
 ```js
 
 ```
 
-## t45
+## t455
+
+```js
+
+```
+
+## t455
 
 ```js
 
