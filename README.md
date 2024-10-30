@@ -538,26 +538,560 @@ function sortArray(array) {
 console.log(sortArray([5, 3, 2, 8, 1, 4])); // [1, 3, 2, 8, 5, 4];
 ```
 
-## t455
+## Find the position
 
 ```js
+/*
+When provided with a letter, return its position in the alphabet.
+Input :: "a"
+Output :: "Position of alphabet: 1"
+Note: Only lowercased English letters are tested
+*/
+
+function position(letter) {
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    return `Position of alphabet: ${alphabet.indexOf(letter) + 1}`;
+}
+```
+
+## Double Char
+
+```js
+/*
+Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
+*/
+function doubleChar(str) {
+    let result = '';
+
+    for (let i = 0; i < str.length; i++) {
+        result += str[i] + str[i];
+    }
+
+    return result;
+}
+
+```
+
+## duplicateChar
+
+```js
+/*
+Given a string with duplicate Char, you have to return a string in which each character (case-sensitive) is repeated once.
+*/
+function doubleChar(str) {
+    let result = '';
+
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] !== str[i - 1] || i === 0) {
+            result += str[i];
+        }
+    }
+
+    return result;
+}
+```
+
+## Calculate BMI
+
+```js
+
+/* Write function bmi that calculates body mass index (bmi = weight / height2).
+
+if bmi <= 18.5 return "Underweight"
+
+if bmi <= 25.0 return "Normal"
+
+if bmi <= 30.0 return "Overweight"
+
+if bmi > 30 return "Obese"*/
+
+function bmi(weight, height) {
+    let bmi = weight / (height * height);
+    if (bmi <= 18.5) {
+        return "Underweight";
+    } else if (bmi <= 25.0) {
+        return "Normal";
+    } else if (bmi <= 30.0) {
+        return "Overweight";
+    } else {
+        return "Obese";
+    }
+}
+
+```
+
+## Multiply the number
+
+```js
+/*Jack really likes his number five: the trick here is that you have to multiply each number by 5 raised to the number of digits of each numbers, so, for example:
+3 -->    15  (  3 * 5¹)
+ 10 -->   250  ( 10 * 5²)
+200 --> 25000  (200 * 5³)
+  0 -->     0  (  0 * 5¹)
+ -3 -->   -15  ( -3 * 5¹)
+*/
+function multiply(number) {
+    let base = 5;
+    const numberString = number.toString().split('');
+    let exponent = numberString.length;
+
+    if (number > 0) {
+        let result = Math.pow(base, exponent) * number;
+        return result;
+    } else {
+        let result = Math.pow(base, exponent - 1) * number;
+        return result;
+    }
+}
+```
+
+## Convert a string to an array
+
+```js
+/*Write a function to split a string and convert it into an array of words.
+*/
+function stringToArray(string) {
+    return string.split(" ");
+
+}
+
+```
+
+## If you can't sleep, just count sheep
+
+```js
+/*Given a non-negative integer, 3 for example, return a string with a murmur: "1 sheep...2 sheep...3 sheep...". Input will always be valid, i.e. no negative integers.
+*/
+function countSheep(num) {
+    if (num < 0) {
+        return "not a valid number";
+    } else {
+        let result = "";
+        for (let i = 1; i <= num; i++) {
+            result += i + " sheep...";
+        }
+        return result;
+    }
+}
+
+```
+
+## Rock Paper Scissors
+
+```js
+/*Let's play! You have to return which player won! In case of a draw return Draw!.
+*/
+function rps(p1, p2) {
+    if (p1 === "rock" && p2 === "scissors" || p1 === "scissors" && p2 === "paper" || p1 === "paper" && p2 === "rock") {
+        return "Player 1 won!";
+    } else if (p1 === p2) {
+        return "Draw!";
+    }
+    else {
+        return "Player 2 won!";
+    }
+}
+
+
+```
+
+## Count by X
+
+```js
+/*   Create a function with two arguments that will return an array of the first n multiples of x.
+
+Assume both the given number and the number of times to count will be positive numbers greater than 0.
+
+Return the results as an array or list ( depending on language ).   
+*/
+
+function countBy(x, n) {
+    let z = [];
+    for (let i = 1; i <= n; i++) {
+        z.push(x * i);
+    }
+
+    return z;
+}
+
+```
+
+## Will you make it?
+
+```js
+/*  You were camping with your friends far away from home, but when it's time to go back, you realize that your fuel is running out and the nearest pump is 50 miles away! You know that on average, your car runs on about 25 miles per gallon. There are 2 gallons left.
+
+Considering these factors, write a function that tells you if it is possible to get to the pump or not.
+
+Function should return true if it is possible and false if not.
+*/
+
+const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
+
+    if (distanceToPump <= mpg * fuelLeft) {
+        return true
+    } else {
+        return false;
+    };
+}
+
+```
+
+## Reversed sequence
+
+```js
+/* Build a function that returns an array of integers from n to 1 where n>0.
+
+Example : n=5 --> [5,4,3,2,1]     
+*/
+function reverseSeq(n) {
+    let result = [];
+    for (let i = n; i > 0; i--) {
+        result.push(i);
+    };
+    return result;
+}
+```
+
+## Count Odd Numbers below n
+
+```js
+/* Given a number n, return the number of positive odd numbers below n, EASY!     
+*/
+function oddCount(n) {
+    let arr = [];
+    for (let i = 1; i < n; i++) {
+        if (i % 2 !== 0) {
+            arr.push(i);
+        }
+    }
+    return arr.length;
+}
+
+```
+
+## Type of sum
+
+```js
+/*   Return the type of the sum of the two arguments   
+*/
+function typeOfSum(a, b) {
+    let sum = a + b;
+    if (typeof sum === 'number') {
+        return 'number';
+    } else if (typeof sum === 'string') {
+        return 'string';
+    }
+    else {
+        return 'NaN';
+    }
+}
+
+```
+
+## Geometry Basics: Distance between points in 2D
+
+```js
+/*    Point objects have attributes x and y.
+
+Write a function calculating distance between Point a and Point b.
+
+Input coordinates fit in range −50⩽x,y⩽50. Tests compare expected result and actual answer with tolerance of 1e-6.
+*/
+function distanceBetweenPoints(a, b) {
+    // vérifier si les points sont dans la plage x >= -50 et y <= 50  
+    if (a.x >= -50 && b.x >= -50 && a.y <= 50 && b.y <= 50) {
+        // calculer la distance entre les deux points par axes
+        let distanceX = a.x - b.x;
+        let distanceY = a.y - b.y;
+
+        // formule de distance euclidienne pour obtenir la distance.
+        // calcul du carré pour chaque point et chaque axe afin de mettre en positif (Math.pow(base, exposant))on multiplie la distance par elle même 
+        let distanceXSquare = Math.pow(distanceX, 2);
+        let distanceYSquare = Math.pow(distanceY, 2);
+        // calcul de la distance entre les deux points avec la racine carrée
+        let distance = Math.sqrt(distanceXSquare + distanceYSquare);
+        return distance;
+
+    } else {
+        return 'Les points ne sont pas dans la plage x >= -50 et y <= 50';
+    }
+
+}
+```
+
+OU
+
+```js
+/*    Point objects have attributes x and y.
+
+Write a function calculating distance between Point a and Point b.
+
+Input coordinates fit in range −50⩽x,y⩽50. Tests compare expected result and actual answer with tolerance of 1e-6.
+*/
+function distanceBetweenPoints(a, b) {
+    // vérifier si les points sont dans la plage x >= -50 et y <= 50  
+    if (a.x >= -50 && b.x >= -50 && a.y <= 50 && b.y <= 50) {
+        // calculer la distance entre les deux points par axes
+        let distanceX = a.x - b.x;
+        let distanceY = a.y - b.y;
+        // calcul de la distance entre les deux points avec exponentiation
+        let distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);;
+        return distance;
+
+    } else {
+        return 'Les points ne sont pas dans la plage x >= -50 et y <= 50';
+    }
+
+}
+```
+
+## Count words
+
+```js
+/*   Can you implement a function that will return number of words in a string?
+You have to ensure that spaces in string is a whitespace for real.   
+*/
+function countWords(str) {
+    // si le string est vide, retourner 0
+    if (str === "") {
+        return 0;
+    }
+    // remplacer les caractères spéciaux et chiffres par des espaces tout en gardant les lettres minusculs et majuscules
+    str = str.replace(/[^a-zA-Z ]/g, " ").trim();
+    // Transformer en tableau
+    str = str.split(" ");
+    // filtrer les éléments vides
+    str = str.filter((word) => word !== "");
+    console.log(str);
+    return str.length;
+}
+
+```
+
+## Are there any arrows left?
+
+```js
+/*   You have a quiver of arrows, but some have been damaged. The quiver contains arrows with an optional range information (different types of targets are positioned at different ranges), so each item is an arrow.
+You need to verify that you have some good ones left, in order to prepare for battle:
+
+anyArrows([{range: 5}, {range: 10, damaged: true}, {damaged: true}])
+If an arrow in the quiver does not have a damaged status, it means it's new.
+
+The expected result is a boolean, indicating whether you have any good arrows left.   
+*/
+
+function anyArrows(arrows) {
+    const result = arrows.map(arrow => {
+        // vérifier chaque arrow si elle est endommagée ou non
+        if (arrow.damaged === true) {
+            return false;
+        } else {
+            return true;
+        }
+    })
+    // vérifier si au moins une flèche n'est pas endommagée
+    return result.includes(true);
+}
+```
+
+## Polish alphabet
+
+```js
+/*      
+*/
+
+```
+
+## t458
+
+```js
+/* There are 32 letters in the Polish alphabet: 9 vowels and 23 consonants.
+
+Your task is to change the letters with diacritics:
+
+ą -> a,
+ć -> c,
+ę -> e,
+ł -> l,
+ń -> n,
+ó -> o,
+ś -> s,
+ź -> z,
+ż -> z
+and print out the string without the use of the Polish letters.
+
+For example:
+
+"Jędrzej Błądziński"  -->  "Jedrzej Bladzinski"     
+*/
+function correctPolishLetters(string) {
+    return string.replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e').replace(/ł/g, 'l').replace(/ń/g, 'n').replace(/ó/g, 'o').replace(/ś/g, 's').replace(/ź/g, 'z').replace(/ż/g, 'z');
+}
+```
+
+## Keep Hydrated
+
+```js
+/*   Nathan loves cycling.
+
+Because Nathan knows it is important to stay hydrated, he drinks 0.5 litres of water per hour of cycling.
+
+You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value.
+
+For example:
+
+time = 3 ----> litres = 1
+
+time = 6.7---> litres = 3
+
+time = 11.8--> litres = 5   
+*/
+function litres(time) {
+    // nb de litres par temps arrondi à l'entier inférieur
+    return Math.floor(time * 0.5);
+}
+```
+
+## arrosez le jardin après la pluie?
+
+```js
+/*   verifier si plante à besoin d'eau supplémentaire après la pluie 
+*/
+function rainAmount(mm) {
+    if (mm < 40) {
+        return "You need to give your plant " + (40 - mm) + " mm of water"
+    }
+    else {
+        return "Your plant has had more than enough water for today!"
+    };
+}
+```
+
+## Miles per gallon to kilometers per liter
+
+```js
+/*   Sometimes, I want to quickly be able to convert miles per imperial gallon (mpg) into kilometers per liter (kpl).
+
+Create an application that will display the number of kilometers per liter (output) based on the number of miles per imperial gallon (input).
+
+Make sure to round off the result to two decimal points.
+
+Some useful associations relevant to this kata:
+
+1 Imperial Gallon = 4.54609188 litres
+1 Mile = 1.609344 kilometres   
+*/
+function converter(mpg) {
+    const nbKmPermiles = 1.609344;
+    const nbLitresPerGallon = 4.54609188;
+    // calculer le nombre de km parcourus par gallon
+    const nbKmPerGallon = nbKmPermiles * mpg;
+    // calculer le nombre de litres consommés par km
+    const kpl = nbKmPerGallon / nbLitresPerGallon;
+    // arrondir à 2 chiffres après la virgule
+    return parseFloat(kpl.toFixed(2));
+
+}
+```
+
+## Blood-Alcohol Content
+
+```js
+/*  Bob drinks too much, and he gets in trouble for it a lot. He drinks so much, in fact, that he has broken the local law enforcement's breathalizer with his alcoholic breath! Bob feels simply aweful, so he wants to make up for it by creating a function that will calculate his blood-alcohol level for them. Unfortunately, Bob has gotten too inebriated to do any programming today, so he needs your help!
+
+He did manage to research the formula for blood-alcohol content before getting too drunk, which he describes below.
+
+BAC calculator Formula:
+
+BAC% = (A × 5.14 / W × r) - .015 × H 
+
+A: Total alcohol consumed, in ounces (oz)
+W: Body weight, in pounds (lbs)
+r: The alcohol distribution ratio, 0.73 for man, and 0.66 for women
+H: Time passed since drinking, in hours    
+*/
+function bloodAlcoholContent(drinks, weight, sex, time) {
+    // calculer le nb d'alcool dans le sang
+    const alcohol = drinks.ounces * drinks.abv;
+    const ratioFemale = 0.66;
+    const ratioMale = 0.73;
+    if (sex === "female") {
+        // calculer le taux d'alcool dans le sang pour une femme
+        const bac = (alcohol * 5.14 / weight * ratioFemale) - 0.015 * time;
+        return parseFloat(bac.toFixed(4));
+    } else {
+        // calculer le taux d'alcool dans le sang pour un homme
+        const bac = (alcohol * 5.14 / weight * ratioMale) - 0.015 * time;
+        // arrondir à 4 chiffres après la virgule
+        return parseFloat(bac.toFixed(4));
+    }
+}
+```
+
+## Training JS #16: Methods of String object--slice(), substring() and substr()
+
+```js
+/*     Coding in function cutIt, function accept 1 parameter:arr. arr is a string array.
+
+The first mission: Traversing arr, find the shortest string length.
+
+The second mission: Traversing arr again, intercept all strings to the shortest string length(Start from index0). you can use one of slice() substring() or substr() do it. return the result after finished the work. 
+*/
+function cutIt(arr) {
+    //    récupérer la longueur minimale des élements de la liste
+    const minLength = Math.min(...arr.map(e => e.length));
+    //   couper chaque élément de la liste à la longueur minimale
+    return arr.map(e => e.slice(0, minLength));
+
+}
+
+```
+
+## t454
+
+```js
+/*      
+*/
 
 ```
 
 ## t455
 
 ```js
+/*      
+*/
 
 ```
 
-## t455
+## t456
 
 ```js
+/*      
+*/
 
 ```
 
-## t455
+## t457
 
 ```js
+/*      
+*/
+
+```
+
+## t458
+
+```js
+/*      
+*/
+
+```
+
+## t459
+
+```js
+/*      
+*/
 
 ```
